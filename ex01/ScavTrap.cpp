@@ -33,6 +33,13 @@ void ScavTrap::attack(const std::string& target)
 
 void ScavTrap::guardGate()
 {
-	std::cout << "ScavTrap " << this->name << " is now guarding the gates! Intruders beware... or bring cookies." << std::endl;
-	this->guarding_gate = true;
+	if(this->hit_points == 0)
+	{
+		std::cout << "ScavTrap " << this->name << " has no hit points left!" << std::endl;
+	}
+	else
+	{
+		std::cout << "ScavTrap " << this->name << " is now guarding the gates! Intruders beware... or bring cookies." << std::endl;
+		this->guarding_gate = true;
+	}
 }
