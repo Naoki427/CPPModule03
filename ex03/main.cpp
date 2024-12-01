@@ -1,12 +1,12 @@
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main()
 {
 	//default constructor
-	FragTrap pikachu("Pikachu");
-	FragTrap mewtwo("Mewtwo");
+	DiamondTrap pikachu("Pikachu");
+	DiamondTrap mewtwo("Mewtwo");
 	//copy constructor
-	FragTrap metamon(pikachu);
+	DiamondTrap metamon(pikachu);
 
 	std::cout << std::endl;
 
@@ -18,8 +18,8 @@ int main()
 	mewtwo.beRepaired(10);
 
 	std::cout << std::endl;
-	//hifive
-	mewtwo.highFivesGuys();
+	//whoAmI
+	pikachu.whoAmI();
 
 	std::cout << std::endl;
 	return 0;

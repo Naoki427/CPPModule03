@@ -3,12 +3,27 @@
 ClapTrap::ClapTrap(std::string name): name(name),hit_points(10),energy_points(10),attack_damage(0)
 {
 	std::cout << "ClapTrap " << this->name << " has been assembled! Ready for action!" << std::endl;
-	this->name = name;
 }
 
 ClapTrap::~ClapTrap()
 {
 	std::cout << "ClapTrap " << this->name << " has been dismantled. Farewell!" << std::endl;
+}
+
+ClapTrap::ClapTrap(const ClapTrap &origin) {
+	std::cout << "Claptrap copy constructor called" << std::endl;
+	*this = origin;
+}
+
+ClapTrap& ClapTrap::operator= (const ClapTrap &origin){
+	std::cout << "ClapTrap copy assignment operator called" << std::endl;
+	if(this == &origin)
+		return *this;
+	this->name = origin.name;
+	this->hit_points = origin.hit_points;
+	this->energy_points = origin.energy_points;
+	this->attack_damage = origin.attack_damage;
+	return *this;
 }
 
 void ClapTrap::attack(const std::string& target)
@@ -55,13 +70,13 @@ void ClapTrap::beRepaired(unsigned int amount)
 	}
 	else
 	{
-		unsigned int maxRecoverable = INT_MAX - this->hit_points;
+		unsigned int maxRecoverable = UINT_MAX - this->hit_points;
 		if (amount > maxRecoverable) 
 		{
 			std::cout << "ClapTrap " << this->name << " is trying to recover " << amount 
 					<< " hit points, but it can only recover " << maxRecoverable 
 					<< " hit points to reach the maximum!" << std::endl;
-			this->hit_points = INT_MAX;
+			this->hit_points = UINT_MAX;
 		} 
 		else 
 		{
@@ -69,5 +84,6 @@ void ClapTrap::beRepaired(unsigned int amount)
 			std::cout << "ClapTrap " << this-> name << " recovers " << amount 
 					<< " hit points, total hit points: " << this->hit_points << "." << std::endl;
    		}
+		this->energy_points--;
 	}
 }
